@@ -66,4 +66,5 @@
     //echo $newString;
     echo $chuoi[2]; 
     echo "chinh";
+    echo "chinh123";
 ?>
