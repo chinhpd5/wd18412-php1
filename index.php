@@ -65,8 +65,5 @@
     $newString = str_replace('bằng','=',$chuoi); // thay thế
     //echo $newString;
     echo $chuoi[2]; 
-    echo "chinh";
-    echo "chinh456";
-    echo "test";
-    echo "123";
+    
 ?>
