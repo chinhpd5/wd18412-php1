@@ -67,4 +67,5 @@
     echo $chuoi[2]; 
     echo "chinh";
     echo "chinh456";
+    echo "test";
 ?>
