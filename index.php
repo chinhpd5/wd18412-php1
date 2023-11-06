@@ -64,6 +64,6 @@
     //echo strlen($chuoi); //lấy độ dài của chuỗi
     $newString = str_replace('bằng','=',$chuoi); // thay thế
     //echo $newString;
-    echo $chuoi[2];
-
+    echo $chuoi[2]; 
+    echo "chinh";
 ?>
