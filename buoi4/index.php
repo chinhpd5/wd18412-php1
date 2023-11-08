@@ -67,11 +67,88 @@
     }
     */
 
+    $array2 =[
+        [
+            "name" => "Phí Đức Chính",
+            "age" => 20,
+            "khoa" => "Công nghệ thông tin",
+            "gt" => true,
+            "result" => [6,7.5,8.5,9]
+        ],
+        [
+            "name" => "Đặng Thành Long",
+            "age" => 21,
+            "khoa" => "Ứng dụng phần mềm",
+            "gt" => true,
+            "result" => [5,9.5,10,9]
+        ],
+        [
+            "name" => "Trần Thị Ngọc",
+            "age" => 20,
+            "khoa" => "Lập trình web",
+            "gt" => false,
+            "result" => [5,8.5,9,10]
+        ],
+        [
+            "name" => "Đinh Ngọc Hồng",
+            "age" => 22,
+            "khoa" => "Ứng dụng phần mềm",
+            "gt" => false,
+            "result" => [4,6,8.5,10]
+        ]
+    ];
+    echo '<br>';
+
+    foreach($array2 as $key => $value){
+        $tong = 0;
+        // echo "<pre>";
+        // var_dump($value);
+        foreach($value["result"] as $diem){
+            $tong += $diem;
+        }
+        echo "Họ và tên: ".$value["name"]." Điểm: ".$tong/count($value["result"])."<br>";
+    }
+
+
+    #Function - Hàm
+    echo '<br>';
+    // hàm không có giá trị trả về
+    function sayHello($name){
+        echo "Chào bạn $name";
+    }
+    $ten = "chinhpd5";
+    sayHello($ten);
+
+    //hàm có giá trị trả về
+    function tinhTong($a,$b){
+        return $a + $b;
+    }
+
+    $tong = tinhTong(3,4);
+
+    //Cách 2
+    $tinhTich = function ($a,$b){
+        return $a*$b;
+    }
+    tinhTich(4,5);
+
+    // BTVN
+    // viết 1 hàm kiểm tra 1 số có phải là số nguyên tố hay không?
+    // sử dụng hàm kiểm tra trên để làm bài toán tính tích 
+    // các số nguyên tố có trong 1 mảng
+
+
+
     echo '<br>';
     echo '<br>';
     echo '<br>';
     echo '<br>';
     echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';    
     echo '<br>';
     echo '<br>';
     echo '<br>';
