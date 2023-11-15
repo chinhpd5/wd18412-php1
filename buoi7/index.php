@@ -39,6 +39,6 @@
         <th>Tên lớp</th>
     </thead>
     <tbody>
-        <?php echo $hang; ?>
+        <?= $hang ?>
     </tbody>
 </table>
