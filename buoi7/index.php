@@ -13,8 +13,8 @@
         $listSinhVien = $result->fetchAll(PDO::FETCH_ASSOC);
 
         if($listSinhVien){
-            echo "<pre>";
-            print_r($listSinhVien);
+            // echo "<pre>";
+            // print_r($listSinhVien);
 
             foreach($listSinhVien as $key => $item){
                 $hang .= '
@@ -29,7 +29,7 @@
         }
     }
 ?>
-
+<button><a href="add.php" style="text-decoration:none">Thêm sinh viên</a></button>
 <table border>
     <thead>
         <th>STT</th>
