@@ -1,5 +1,6 @@
 <?php
-    require_once("connect.php");
+    include_once('./connect.php');
+    $id='';
     $hoVaTen='';
     $khoa ='';
     $ngaySinh ='';
@@ -11,18 +12,39 @@
     $errLopId ='';
     $isCheck = true;
 
-    
-    
+    if(isset($_GET["id"])){
+        $id = $_GET["id"];
+        if($id){
+            $sql = "SELECT * FROM sinhvien WHERE id = $id";
+            try {
+                $result = $conn->query($sql);
+                if($result){
+                    $sinhVien = $result->fetch(PDO::FETCH_ASSOC);
+                    if($sinhVien){
+                        // echo "<pre>";
+                        // print_r($sinhVien);
+                        $id = $sinhVien["id"];
+                        $hoVaTen = $sinhVien["hoVaTen"];
+                        $khoa = $sinhVien["khoa"];
+                        $ngaySinh = $sinhVien["ngaySinh"];
+                        $lopId = $sinhVien["lopId"];
+                    }
+                }
+            } catch (\Throwable $th) {
+                echo "Không tìm thấy sinh viên";
+                die();
+            }
+        }
+    }
 
     if(isset($_POST["submit"])){
+        $id =$_POST["id"];
         $hoVaTen = trim($_POST["hoVaTen"]);
         $khoa = trim($_POST["khoa"]);
         $ngaySinh = $_POST["ngaySinh"];
         $lopId = $_POST["lopId"];
-        // echo "<pre>";
-        // print_r([$hoVaTen,$khoa,$ngaySinh,$lopId]);
-        
-        //Kiểm tra dữ liệu
+
+         //Kiểm tra dữ liệu
         if(empty($hoVaTen)){
             $errHoVaTen ="Người dùng nhập họ và tên";
             $isCheck= false;
@@ -35,25 +57,23 @@
             $isCheck= false;
             $errNgaySinh ="Người dùng nhập ngày sinh";
         }
-
+        // echo "<pre>";
+        // print_r([$id,$hoVaTen,$khoa,$ngaySinh,$lopId]);
         if($isCheck){
-            $sql = "INSERT INTO sinhvien(hoVaTen,khoa,ngaySinh,lopId) 
-                    VALUES ('$hoVaTen','$khoa','$ngaySinh',$lopId)";
+            $sql ="UPDATE sinhvien 
+            SET hoVaTen ='$hoVaTen', khoa = '$khoa', ngaySinh ='$ngaySinh', lopId ='$lopId'
+            WHERE id = $id";
 
             $result = $conn->query($sql);
-
             if($result){
-                // echo "Thêm thành công";
-                header("Location: index.php");
+                header('Location: index.php');
             }else{
-                echo "Thêm thất bại";
+                echo "Có lỗi khi thêm";
             }
-
-
-
         }
-
     }
+
+
     $sql = "SELECT * FROM lop";// viết ra 1 câu sql lấy danh sách lớp
     $result = $conn->query($sql);//thực hiện câu sql
     $option="";
@@ -70,11 +90,14 @@
 
         }
     }
-   // echo htmlspecialchars($option);
+
+    
 
 ?>
 
-<form action="add.php" method="post">
+<form action="edit.php" method="post">
+    <input type="hidden" name="id" value="<?= $id; ?>">
+
     <label for="">Họ và tên</label>
     <input type="text" name="hoVaTen" value="<?= $hoVaTen?>">
     <span style="color:red"><?= $errHoVaTen; ?></span><br>

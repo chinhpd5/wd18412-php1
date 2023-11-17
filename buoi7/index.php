@@ -24,11 +24,13 @@
                     <td>'.$item["khoa"].'</td>
                     <td>'.$item["ngaySinh"].'</td>
                     <td>'.$item["tenLop"].'</td>
+                    <td><a href="edit.php?id='.$item["id"].'">Sửa</a></td>
                 </tr>';
             }
         }
     }
 ?>
+
 <button><a href="add.php" style="text-decoration:none">Thêm sinh viên</a></button>
 <table border>
     <thead>
@@ -37,6 +39,7 @@
         <th>Khoa</th>
         <th>Ngày sinh</th>
         <th>Tên lớp</th>
+        <th></th>
     </thead>
     <tbody>
         <?= $hang ?>
