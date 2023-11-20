@@ -25,6 +25,7 @@
                     <td>'.$item["ngaySinh"].'</td>
                     <td>'.$item["tenLop"].'</td>
                     <td><a href="edit.php?id='.$item["id"].'">Sửa</a></td>
+                    <td><a href="delete.php?id='.$item["id"].'">Xóa</a></td>
                 </tr>';
             }
         }
