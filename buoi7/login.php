@@ -1,25 +1,17 @@
 <?php
-    
+    session_start();
 
     if(isset($_POST["submit"])){
         $userName = $_POST["username"];
         $password = $_POST["password"];
 
-        // print_r([$userName,$password]);
-
-        if($userName == 'admin' && $password =='123456'){
-            // echo "Đăng nhập thành công";
-            // if( ! isset($_COOKIE["username"])){
-                setcookie('username',$userName ,time() + 60*60*24);
-                header('Location: index.php');
-            // }else{
-            //     echo "Bạn chưa đăng xuất";
-            // }
+        if($userName == 'admin' && $password == '123456'){
+            $_SESSION["username"] = $userName;
+            header('Location: index.php');
         }else{
             echo "Sai tài khoản hoặc mật khẩu";
         }
     }
-
 ?>
 
 <form action="login.php" method ="post">

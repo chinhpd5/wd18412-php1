@@ -1,5 +1,16 @@
 <?php
+    session_start();
     include_once("connect.php");
+
+    if(isset($_SESSION["username"])){
+        echo "Xin chào ".$_SESSION["username"];
+        echo '<button><a href="logout.php">Đăng xuất</a></button>';
+    }else{
+        echo '<button><a href="login.php">Đăng nhập</a></button>';
+    }
+
+
+
     //print_r($conn);
     $hang='';
     $sql = "SELECT sinhvien.id, hoVaTen,khoa,ngaySinh,lopId,lop.tenLop 
