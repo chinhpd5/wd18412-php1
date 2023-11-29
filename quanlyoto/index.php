@@ -2,7 +2,14 @@
     //Hiển thị danh sách
     //gọi file connect
     include_once('connect.php');
-    
+
+    //đăng nhập sử dụng cookie
+    if(isset($_COOKIE["username"])){
+        echo "Xin chào ".$_COOKIE["username"];
+        echo '<button><a href="logout.php">Đăng xuất</a></button>';
+    }else{
+        echo '<button><a href="login.php">Đăng nhập</a></button>';
+    }
 
     //lấy danh sách xe
     $sql = 'SELECT xe.id, tenLoaiXe,xuatXu,idDanhMuc,mauSac,hinhAnh, danhmuc.tenHangXe
@@ -25,6 +32,7 @@
                         <td><img src="uploads/'.$item["hinhAnh"].'" alt="" style="width:150px"></td>
                         <td>'.$item["tenHangXe"].'</td>
                         <td><a href="edit.php?id='.$item["id"].'">Sửa</a></td>
+                        <td><a onclick="return confirm(\'Bạn chắc chắn muốn xóa\')" href="delete.php?id='.$item["id"].'">Xóa</a></td>
                     </tr>
                 ';
             }
@@ -34,7 +42,7 @@
 
 ?>
 
-
+<br>
 <button><a href="add.php">Thêm mới</a></button>
 <table border>
     <thead>
